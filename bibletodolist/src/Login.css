@@ -1,0 +1,132 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: white;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: white;
+}
+
+.back-arrow {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    color: white;
+    background-color: #ccc;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-btn:disabled {
+    background-color: #e0e0e0;
+}
+
+.link-group {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    margin: 10px 0 20px;
+    color: #666;
+}
+
+.link-group a {
+    color: #666;
+    text-decoration: none;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.separator:before,
+.separator:after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: #ddd;
+    margin: 0 10px;
+}
+
+.social-login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.kakao {
+    background-color: #FFEB00;
+    color: #3C1E1E;
+}
+
+.naver {
+    background-color: #03C75A;
+    color: white;
+}
+
+.google {
+    background-color: #F5F5F5;
+    color: #333;
+    border: 1px solid #ddd;
+}
+img{
+ width: 30px; 
+ height: 30px;
+ margin-right: 5px;
+}

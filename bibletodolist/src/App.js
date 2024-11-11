@@ -1,9 +1,12 @@
-import React from 'react';
-import Hello from './Hello';
+import React from "react";
+import Hello from "./Hello";
+import Login from "./Login";
+
 function App() {
   return (
     <div className="App">
-      <Hello></Hello>
+      <Hello />
+      <Login />
     </div>
   );
 }
