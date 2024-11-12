@@ -1,13 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import "./Login.css"
 
 const Login = () => {
     return (
         <div>
             <div className="container">
-                <a href="#">
+                <Link to="/">
                     <div className="back-arrow">←</div>
-                </a>
+                </Link>
                 <h1>로그인</h1>
 
                 <label for="id">아이디</label>

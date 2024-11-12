@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import './Hello.css'
 
 const Hello = () => {
@@ -6,10 +8,11 @@ const Hello = () => {
         <div>
             <div className="container">
                 <div> <span id="title">Bible diary</span></div>
-                <button className="open-btn">open</button>
+                <Link to="/home" className="open-btn">open</Link>
+                
                 <div className="bottom-buttons">
-                    <button className="btn"><span class="icon">👤</span>회원가입</button>
-                    <button className="btn"><span class="icon">➡️</span>로그인</button>
+                    <Link to="login/" className="btn"><span className="icon">➡️</span>로그인</Link>
+                    <Link to="join/" className="btn"><span className="icon">👤</span>회원가입</Link>
                 </div>
             </div>
         </div>
