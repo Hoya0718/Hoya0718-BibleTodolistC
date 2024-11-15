@@ -1,10 +1,11 @@
 import React from "react";
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
-import Hello from "./Hello";
-import Login from "./Login";
-import Join from "./Join";
-import Main from "./Main";
+import Hello from "./Components/Hello/Hello";
+import Login from "./Components/Login/Login";
+import Join from "./Components/Join/Join";
+import Main from "./Components/Main/Main";
+import Footer from "./Components/Footer/Footer"
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/main" element={<Main />} />
           <Route path="/login" element={<Login />} />
           <Route path="/join" element={<Join />} />
+          <Route path="/footer" element={<Footer />} />
         </Routes>
       </BrowserRouter>
     </div>
