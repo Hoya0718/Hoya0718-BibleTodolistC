@@ -1,15 +1,27 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {Link, useNavigate} from "react-router-dom"
 
 import Footer from "../Footer/Footer"
 
 const Main = () => {
+    
     return(
         <div>
             <h1>임시 메인페이지</h1>
             <div>님 환영합니다</div>
-            <Link to="">구약성경</Link> <span> | </span><Link to="">신약성경</Link>
+
             <br />
+    
+            <Link to="/chooseBible" state= {{prop: "구약"}}> 
+                <button> 구약 성경 </button> 
+            </Link> 
+             
+            <Link to="/chooseBible" state= {{prop: "신약"}}> 
+                <button> 신약 성경 </button> 
+            </Link> 
+           
+            <br />
+
             <Link to="">검색</Link> <span> | </span><Link to="">책갈피</Link>
 
             <div>
