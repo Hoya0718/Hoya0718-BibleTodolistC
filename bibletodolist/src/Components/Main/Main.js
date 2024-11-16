@@ -12,11 +12,11 @@ const Main = () => {
 
             <br />
     
-            <Link to="/chooseBible" state= {{prop: "구약"}}> 
+            <Link to="/chooseTestament" state= {{prop: "구약"}}> 
                 <button> 구약 성경 </button> 
             </Link> 
              
-            <Link to="/chooseBible" state= {{prop: "신약"}}> 
+            <Link to="/chooseTestament" state= {{prop: "신약"}}> 
                 <button> 신약 성경 </button> 
             </Link> 
            
