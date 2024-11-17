@@ -37,8 +37,8 @@ const Login = () => {
                 console.log(res);
 
                 // 로그인 성공 시 메인 페이지로 이동
-                if (res.message == "success") {  // 서버에서 성공 응답을 받았을 때
-                    navigate("/main");  // 메인 페이지로 이동
+                if (res.message === "success") {  // 서버에서 성공 응답을 받았을 때
+                    navigate("/basic");  // 메인 페이지로 이동
                 } else {
                     // 실패한 경우 예외 처리 (예: 알림 표시)
                     alert("로그인 실패. 다시 시도해주세요.");

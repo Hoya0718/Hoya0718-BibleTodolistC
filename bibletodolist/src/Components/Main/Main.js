@@ -1,10 +1,7 @@
-import React, {useState, useEffect} from "react";
-import {Link, useNavigate} from "react-router-dom"
-
-import Footer from "../Footer/Footer"
+import React from "react";
+import {Link} from "react-router-dom";
 
 const Main = () => {
-    
     return(
         <div>
             <h1>임시 메인페이지</h1>
@@ -12,11 +9,11 @@ const Main = () => {
 
             <br />
     
-            <Link to="/chooseTestament" state= {{prop: "구약"}}> 
+            <Link to="/basic/chooseTestament" state= {{prop: "구약"}}> 
                 <button> 구약 성경 </button> 
             </Link> 
              
-            <Link to="/chooseTestament" state= {{prop: "신약"}}> 
+            <Link to="/basic/chooseTestament" state= {{prop: "신약"}}> 
                 <button> 신약 성경 </button> 
             </Link> 
            
@@ -32,7 +29,7 @@ const Main = () => {
                 <span>오늘의 잠언 </span>
             </div>
             <div>
-                <Footer></Footer>
+                
             </div>
         </div>
     )
