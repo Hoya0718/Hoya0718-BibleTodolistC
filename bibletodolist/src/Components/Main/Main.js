@@ -2,10 +2,14 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 const Main = () => {
+
+    const userId = sessionStorage.getItem('user_id');
+    const userRole = sessionStorage.getItem('user_role');
+
     return(
         <div>
             <h1>임시 메인페이지</h1>
-            <div>님 환영합니다</div>
+            <div>{userId}님 환영합니다</div>
 
             <br />
     

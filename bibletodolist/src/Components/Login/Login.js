@@ -4,8 +4,8 @@ import "./Login.css"
 
 const Login = () => {
     const [loginInfo, setLoginInfo] = useState({
-        id: "",
-        pw: ""
+        user_id: "",
+        user_pw: ""
     });
 
     const navigate = useNavigate();  // useNavigate 훅을 사용하여 navigate 함수 가져오기
@@ -32,12 +32,14 @@ const Login = () => {
             },
             body: JSON.stringify(loginInfo)  // 로그인 정보를 JSON 형태로 변환하여 요청 본문에 담음
         })
-            .then((res) => res.json())  // 서버 응답을 JSON으로 처리
-            .then((res) => {
-                console.log(res);
-
+            .then((data) => data.json())  // 서버 응답을 JSON으로 처리
+            .then((data) => {
+                console.log(data.user_id);
+                console.log(data.user_role);
                 // 로그인 성공 시 메인 페이지로 이동
-                if (res.message === "success") {  // 서버에서 성공 응답을 받았을 때
+                if (data.user_id === loginInfo.user_id) {
+                    sessionStorage.setItem("user_id", loginInfo.user_id)  // 서버에서 성공 응답을 받았을 때
+                    sessionStorage.setItem("user_role", loginInfo.user_role)
                     navigate("/basic");  // 메인 페이지로 이동
                 } else {
                     // 실패한 경우 예외 처리 (예: 알림 표시)
@@ -64,8 +66,8 @@ const Login = () => {
                         type="text"
                         id="id"
                         placeholder="아이디를 입력해주세요."
-                        name="id"
-                        value={loginInfo.id}
+                        name="user_id"
+                        value={loginInfo.user_id}
                         onChange={handleChange}  // 입력값이 변경될 때마다 handleChange 호출
                     />
 
@@ -74,8 +76,8 @@ const Login = () => {
                         type="password"
                         id="password"
                         placeholder="비밀번호를 입력해주세요."
-                        name="pw"
-                        value={loginInfo.pw}
+                        name="user_pw"
+                        value={loginInfo.user_pw}
                         onChange={handleChange}  // 입력값이 변경될 때마다 handleChange 호출
                     />
                     <button type="submit" className="login-btn">로그인</button>
