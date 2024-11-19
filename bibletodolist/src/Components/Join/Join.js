@@ -124,6 +124,18 @@ const Join = () => {
                 <label>
                     <input
                         type="radio"
+                        id="청년부"
+                        name="department"
+                        value="청년부"
+                        placeholder="소속"
+                        onChange={handleChange}
+                    />
+                    청년부
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
                         id="대학부"
                         name="department"
                         value="대학부"

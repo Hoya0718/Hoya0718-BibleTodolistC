@@ -19,7 +19,8 @@ const ChooseTestament = () => {
 
   const jsonTestament = { testament: getProp } // String형인 getProp을 Json형식으로
 
-  useEffect(() => {
+  //선택한 성경(구약, 신약)의 목차를 호출하는 메서드
+  useEffect(() => { 
     fetch('/api/getBibleTestament', {
       method: "POST",
       headers: {
@@ -33,6 +34,7 @@ const ChooseTestament = () => {
       })
   }, []);
 
+  //선택한 목차(ex. 창세기, 출애굽기)의 장을 호출하는 메서드
   const getChapter = (e) => {
     const jsonChapter = { list: e.target.textContent };
     setLastList(e.target.textContent);
@@ -51,6 +53,7 @@ const ChooseTestament = () => {
       })
   };
 
+  //선택한 장(ex. 창세기 1장)의 절을 호출하는 메서드
   const getVerse = (e) => {
     const jsonVerse = {
       chapter: e.target.textContent,
@@ -71,6 +74,7 @@ const ChooseTestament = () => {
       })
   };
 
+  //선택한 절(ex. 창세기 1장 1절)의 내용을 호출해 main5컴포넌트에게 전송 및 이동
   const getContent = (e) => {
     console.log(lastList);
     console.log(lastChapter);
