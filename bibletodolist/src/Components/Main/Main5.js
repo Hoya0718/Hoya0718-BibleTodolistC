@@ -125,6 +125,8 @@ const Main5 = () => {
       </ul>
       <button onClick={prevChapter}>이전 장</button> |
       <button onClick={nextChapter}>다음 장</button>
+
+      <input type="text" placeholder="댓글창"/>
     </div>
   );
 };
