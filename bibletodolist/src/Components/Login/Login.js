@@ -34,8 +34,6 @@ const Login = () => {
         })
             .then((data) => data.json())  // 서버 응답을 JSON으로 처리
             .then((data) => {
-                console.log(data.user_id);
-                console.log(data.user_role);
                 // 로그인 성공 시 메인 페이지로 이동
                 if (data.user_id === loginInfo.user_id) {
                     sessionStorage.setItem("user_id", data.user_id)  // 서버에서 성공 응답을 받았을 때

@@ -1,0 +1,22 @@
+.FooterFrame {
+    background-color: #4C79CD;
+    display : flex;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.footer {
+    width : 25%;
+    text-align: center;
+}
+
+.footerLink{
+    margin-top: 10px;
+    text-decoration: none;
+    color:#FFFFFF;
+}
+
+.footerImg{
+    width:50px;
+    height: auto;
+}

@@ -11,7 +11,7 @@ import Main from "./Components/Main/Main";
 import Main3 from "./Components/Main/Main3"
 import Main4 from "./Components/Main/Main4"
 import Main5 from "./Components/Main/Main5"
-import Main6 from "./Components/Main/Main6"
+import MyPage from "./Components/Main/MyPage"
 
 import Footer from "./Footer";
 import ChooseTestament from "./Components/ChooseTestament/ChooseTestament";
@@ -29,7 +29,7 @@ const App = () => {
             <Route path="main3" element={<Main3 />}/>
             <Route path="main4" element={<Main4 />}/>
             <Route path="main5" element={<Main5 />}/>
-            <Route path="main6" element={<Main6 />}/>
+            <Route path="myPage" element={<MyPage />}/>
             <Route path="chooseTestament" element={<ChooseTestament />} />
           </Route>
           <Route path="/login" element={<Login />} />

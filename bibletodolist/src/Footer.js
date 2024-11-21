@@ -1,24 +1,61 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import './Footer.css';
+
+import home from './img/home.png'
+import bible from './img/bible.png'
+import community from './img/community.png'
+import my from './img/my.png'
 
 const Footer = () => {
 
     const navigate = useNavigate();
 
     const handleLogout = () => {
-       sessionStorage.removeItem('user_id');
-       sessionStorage.removeItem('user_role');
-       
-       navigate('/');
+        sessionStorage.removeItem('user_id');
+        sessionStorage.removeItem('user_role');
+
+        navigate('/');
     }
     return (
-        <div>
-            <Link to="/basic">홈</Link> | 
-            <Link to="/basic/main3">이어보기</Link> |  
-            <Link to="/basic/main4">성경검색</Link> |  
-            <Link to="/basic/main5">마이페이지</Link>
-            <button onClick={handleLogout}>로그아웃</button>
-        </div>
+        <>
+            {/*<button onClick={handleLogout}>로그아웃</button>*/}
+            <div className="FooterFrame">
+                <div className="footer">
+                    <div>
+                        <img className="footerImg" src={home} />
+                    </div>
+                    <div>
+                        <Link className="footerLink" to="/basic">홈</Link>
+                    </div>
+                </div>
+                <div className="footer">
+                    <div>
+                        <img className="footerImg" src={bible} />
+                    </div>
+                    <div>
+                        <Link className="footerLink" to="/basic/main3">성경</Link>
+                    </div>
+                </div>
+                <div className="footer">
+                    <div>
+                        <img className="footerImg" src={community} />
+                    </div>
+                    <div>
+                        <Link className="footerLink" to="/basic/main4">은혜나눔</Link>
+                    </div>
+                </div>
+                <div className="footer">
+                    <div>
+                        <img className="footerImg" src={my} />
+                    </div>
+                    <div>
+                        <Link className="footerLink" to="/basic/main5">My</Link>
+                    </div>
+                </div>
+            </div>
+
+        </>
     );
 };
 

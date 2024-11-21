@@ -1,13 +1,15 @@
 import React from "react";
-import {Outlet} from "react-router-dom"
+import { Outlet } from "react-router-dom"
 
 import Footer from "../../Footer";
 const Basic = () => {
 
-    return(
+    return (
         <>
-            <Outlet />
-            <Footer />
+            <div className="basicFrame">
+                <Outlet />
+                <Footer />
+            </div>
         </>
     )
 }

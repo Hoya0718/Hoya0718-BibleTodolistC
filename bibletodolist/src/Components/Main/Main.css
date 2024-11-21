@@ -1,0 +1,112 @@
+.FullFrame { 
+
+    display: flex;
+    flex-direction: column; /* Vertical alignment */
+    gap: 15px; /* Increased gap between sections */
+    background-color: #DDE9F5;
+}
+
+.headerFrame {
+    display: flex;
+    justify-content: space-between; /* Left and right items spaced out */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #4D7ACE;
+    padding: 10px; /* Padding to give more space inside */
+}
+
+.helloUserText {
+    color: #FFFFFF;
+    font-size: 1.2em; /* Increase font size for better visibility */
+}
+
+.bodyFrame {
+    background-color: #DDE9F5;
+    display: flex;
+    flex-direction: column; /* Arrange content vertically */
+    align-items: center; /* Center items horizontally */
+    gap: 10px; /* Increase the gap between the different sections */
+    padding: 5px; /* Add padding to ensure no content is cramped */
+}
+
+.mainFrame {
+    width:95%;
+    border-radius: 1px;
+    background-color: #FFFFFF;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+}
+
+.mainLink{
+    text-decoration: none;
+    width: 90%;
+    height: 90%;
+}
+
+.main {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: #DDE9F5;
+    border-radius: 10px;
+    height: 100%; /* 고정 높이 설정 */
+    align-items: center; /* 이미지와 텍스트 수직 중앙 정렬 */
+    padding: 1px; /* 패딩으로 공간 조정 */
+}
+
+.mainChild {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1px; /* 이미지와 텍스트 간의 간격을 좁힘 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+.mainImg {
+    width: 100%; /* 고정된 이미지 너비 */
+    height: 100%; /* 고정된 이미지 높이 */
+    object-fit: contain; /* 이미지 비율을 유지하며 크기 조정 */
+}
+
+.mainText  {
+    margin: 0;
+    font-size: 1.1em; /* 폰트 크기 증가 */
+    font-weight: bold; /* 폰트 굵게 */
+    color: #000000; /* 기본 텍스트 색상 */
+}
+
+.mainChild div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.subText{
+    color: #999; /* "바로가기" 텍스트는 회색 */
+    font-size: 0.85em; /* 폰트 크기를 조금 작게 */
+}
+
+.dailyBibleFrame,
+.dailyProverbsFrame {
+    width: 90%;
+    background-color: #FFFFFF;
+    padding: 15px; /* Padding inside the daily frames */
+    border-radius: 10px; /* Rounded corners for consistent style */
+}
+
+.dailyBibleFrame {
+    margin-top: 20px; /* More space above the Bible frame */
+}
+
+.dailyProverbsFrame {
+    margin-top: 20px; /* More space above the Proverbs frame */
+}
+
+.dailyBibleFrame span,
+.dailyProverbsFrame span {
+    font-weight: bold;
+    font-size: 1.1em; /* Slightly larger text for emphasis */
+}
