@@ -92,12 +92,12 @@ const Main = () => {
                     </div>
                 </div>
                 <div className="dailyProverbsFrame">
+                    <Link to="Main4">
                     <div>
-                        <span>오늘의 잠언 </span>
+                        <span>To do list 바로가기</span>
                     </div>
-                    <div>
-                        이미지?
-                    </div>
+                    
+                    </Link>
                 </div>
                 <div>
                     성경 진행률

@@ -1,0 +1,163 @@
+/* Main4.css */
+
+/* 기본 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .toDoFrame {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  
+  .toDoChildFrame {
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .toDoChildFrame p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  button {
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    outline: none;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  /* Modal 스타일 */
+  .ulFrame {
+    padding: 0;
+    margin: 0;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+  }
+  
+  button {
+    background-color: #f1f1f1;
+    color: black;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 5px;
+    font-size: 16px;
+  }
+  
+  .chapterButton {
+    background-color: #f0f0f0;
+    color: black;
+  }
+  
+  .chapterButton:hover {
+    background-color: #d1d1d1;
+  }
+  
+  .Testamentlist,
+  .Listlist,
+  .Chapterlist {
+    list-style-type: none;
+    padding: 10px;
+  }
+  
+  .Testamentlist:hover,
+  .Listlist:hover,
+  .Chapterlist:hover {
+    background-color: #e0e0e0;
+  }
+  
+/* 선택된 범위 색 */
+.selectedRange {
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+/* 선택된 범위 스타일 버튼 */
+.selectedRangeButton {
+    background-color: #4CAF50;
+    color: white;
+}
+  
+  /* 선택된 챕터 버튼 스타일 */
+  .buttonsContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    align-items: center;
+  }
+  
+  .resetButton,
+  .applyButton {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .resetButton {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .applyButton {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .numberButtons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    align-items: center; /* 수직 중앙 정렬 */
+  }
+  
+  .numberButton {
+    width: 80px;
+    height: 50px;
+    background-color: #f1f1f1;
+    color: black;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    text-align: center; /* 텍스트 수평 중앙 정렬 */
+    display: flex;
+    justify-content: center; /* 수평 중앙 정렬 (기존 display: block 특성 때문에) */
+    align-items: center; /* 수직 중앙 정렬 */
+  }
+  
+  .numberButton:hover {
+    background-color: #ddd;
+  }
+  
+  .numberButton:focus {
+    background-color: #ccc;
+  }
+  
+  .numberSpan {
+    text-align: center;
+  }

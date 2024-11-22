@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import {Link, useNavigate} from "react-router-dom";
 
+import './Join.css';
+
 const Join = () => {
 
     const [joinInfo, setJoinInfo] = useState({
@@ -50,8 +52,8 @@ const Join = () => {
         <div>
             <Link to="/">이동하기</Link>
             <br/>
-            <span>간단한 정보를 알려주세요.</span>
-            <form onSubmit={handleSubmit} method="POST">
+            <span className="joinTitle">간단한 정보를 알려주세요.</span>
+            <form className=".form-group" onSubmit={handleSubmit} method="POST">
                 <input
                     type="text"
                     id=""
@@ -196,6 +198,7 @@ const Join = () => {
 
                 <label>
                     <input
+                        className=".radio-group"
                         type="radio"
                         id="여성"
                         name="gender"
@@ -204,7 +207,7 @@ const Join = () => {
                     />
                     여성
                 </label>
-                <button type="submit">회원가입</button>
+                <button className="submit-button" type="submit">회원가입</button>
             </form>
         </div>
     )

@@ -53,9 +53,9 @@ const Main5 = () => {
     verse: currentVerse
   };
   
-  // Fetch content and comments
+  
   useEffect(() => {
-
+// 성경 봤는지 안 봤는지
     fetch('/api/checkVerse', {
       method : "POST",
       headers : {
