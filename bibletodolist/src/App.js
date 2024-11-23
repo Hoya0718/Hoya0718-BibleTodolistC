@@ -8,8 +8,8 @@ import Join from "./Components/Join/Join";
 import Basic from "./Components/Main/Basic";
 import Main from "./Components/Main/Main";
 
-import Main3 from "./Components/Main/Main3"
-import Main4 from "./Components/Main/Main4"
+import Emotion from "./Components/Main/Emotion"
+import TodoList from "./Components/Main/TodoList"
 import Main5 from "./Components/Main/Main5"
 import MyPage from "./Components/Main/MyPage"
 
@@ -26,8 +26,8 @@ const App = () => {
 
           <Route path="/basic" element={<Basic />} >
             <Route index element={<Main />} />
-            <Route path="main3" element={<Main3 />}/>
-            <Route path="main4" element={<Main4 />}/>
+            <Route path="emotion" element={<Emotion />}/>
+            <Route path="todoList" element={<TodoList />}/>
             <Route path="main5" element={<Main5 />}/>
             <Route path="myPage" element={<MyPage />}/>
             <Route path="chooseTestament" element={<ChooseTestament />} />

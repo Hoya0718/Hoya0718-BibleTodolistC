@@ -37,13 +37,13 @@ const Footer = () => {
                             <img className="footerImg" src={bible} />
                         </div>
                         <div>
-                            성경
+                            이어보기 
                         </div>
                     </Link>
                 </div>
 
                 <div className="footer">
-                    <Link className="footerLink" to="/basic/main4">
+                    <Link className="footerLink" to="/basic/emotion">
                         <div>
                             <img className="footerImg" src={community} />
                         </div>
@@ -53,7 +53,7 @@ const Footer = () => {
                     </Link>
                 </div>
                 <div className="footer">
-                    <Link className="footerLink" to="/basic/main5">
+                    <Link className="footerLink" to="/basic/myPage">
                         <div>
                             <img className="footerImg" src={my} />
                         </div>

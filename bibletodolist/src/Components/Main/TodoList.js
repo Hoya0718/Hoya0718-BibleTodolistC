@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { useLocation } from "react-router-dom";
-import './Main4.css';
+import './TodoList.css';
 
 
-const Main4 = () => {
+const TodoList = () => {
     const location = useLocation();
     const [getTestament, setGetTestament] = useState([]);  // 구약/신약
     const [getList, setGetList] = useState([]);            // 성경 리스트
@@ -276,4 +276,4 @@ const Main4 = () => {
     );
 };
 
-export default Main4;
+export default TodoList;

@@ -75,7 +75,7 @@ const Main = () => {
                             </div>
                             <div className="mainChild">
                                 <div>
-                                    <p className="mainText">책갈피</p>
+                                    <p className="mainText">피드백 </p>
                                 </div>
                                 <div>
                                     <p className="subText">바로가기</p>
@@ -92,7 +92,7 @@ const Main = () => {
                     </div>
                 </div>
                 <div className="dailyProverbsFrame">
-                    <Link to="Main4">
+                    <Link to="TodoList">
                     <div>
                         <span>To do list 바로가기</span>
                     </div>
