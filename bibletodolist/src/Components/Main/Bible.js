@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-import './Main5.css'
+import './Bible.css'
 const Main5 = () => {
 
   const location = useLocation();
@@ -235,7 +235,7 @@ const Main5 = () => {
           <h1><br /><br /><button onClick={prevVerse} >이전 절</button> <button onClick={nextVerse}>다음 절</button></h1>
         </div>
 
-        <button onClick={writeCommentButton}>댓글 작성</button>
+        <button onClick={writeCommentButton}>은혜 나누기</button>
         <br /><br />
       
         <ul className="exam">

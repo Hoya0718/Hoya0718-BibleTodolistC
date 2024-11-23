@@ -10,12 +10,13 @@ import Main from "./Components/Main/Main";
 
 import Emotion from "./Components/Main/Emotion"
 import TodoList from "./Components/Main/TodoList"
-import Main5 from "./Components/Main/Main5"
+import Bible from "./Components/Main/Bible"
 import MyPage from "./Components/Main/MyPage"
 
 import Footer from "./Footer";
 import ChooseTestament from "./Components/ChooseTestament/ChooseTestament";
-import Map from "./Map";
+import Suggestion from "./Components/Main/Suggestion";
+import Suggest from"./Components/Main/Suggest";
 
 const App = () => {
   return (
@@ -28,14 +29,14 @@ const App = () => {
             <Route index element={<Main />} />
             <Route path="emotion" element={<Emotion />}/>
             <Route path="todoList" element={<TodoList />}/>
-            <Route path="main5" element={<Main5 />}/>
+            <Route path="bible" element={<Bible />}/>
             <Route path="myPage" element={<MyPage />}/>
             <Route path="chooseTestament" element={<ChooseTestament />} />
+            <Route path="suggestion" element={<Suggestion />} />
           </Route>
+          <Route path="/suggest" element={<Suggest />} />
           <Route path="/login" element={<Login />} />
           <Route path="/join" element={<Join />} />
-
-          <Route path="/map" element={<Map />} />
           <Route path="/footer" element={<Footer />} />
         </Routes>
       </BrowserRouter>

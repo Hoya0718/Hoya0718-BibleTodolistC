@@ -79,7 +79,7 @@ const ChooseTestament = () => {
     console.log(lastList);
     console.log(lastChapter);
     console.log(e.target.textContent);
-    navigate('/basic/main5', { state: { list: lastList, chapter: lastChapter, verse: e.target.textContent } });
+    navigate('/basic/bible', { state: { list: lastList, chapter: lastChapter, verse: e.target.textContent } });
   }
 
 

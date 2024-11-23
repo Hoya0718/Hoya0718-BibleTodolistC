@@ -68,7 +68,7 @@ const Main = () => {
                             </div>
                         </div>
                     </Link>
-                    <Link className="mainLink" to="/basic/">
+                    <Link className="mainLink" to="/basic/suggestion">
                         <div className="main">
                             <div className="mainChild">
                                 <img className="mainImg" src={bookmark} />

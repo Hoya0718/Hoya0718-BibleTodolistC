@@ -101,7 +101,6 @@ const TodoList = () => {
 
     // 상태 변경 후 동작을 처리하는 useEffect
     useEffect(() => {
-        console.log(" useEffect실행")
         fetch('/api/getTodo')
             .then((res) => res.json())
             .then(data => {
