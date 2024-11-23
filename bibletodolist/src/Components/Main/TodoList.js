@@ -184,6 +184,7 @@ const TodoList = () => {
         setModal2IsOpen(false);
         window.location.reload();
     }
+    
     return (
         <>
             <h1>To do list</h1>
@@ -215,7 +216,7 @@ const TodoList = () => {
                 </div>
             </div>
 
-            <Modal isOpen={modal1IsOpen} onRequestClose={closeModal}>
+            <Modal isOpen={modal1IsOpen} onRequestClose={closeModal}> 
                 <button onClick={closeModal}>닫기</button>
 
                 <div className="ulFrame">

@@ -17,6 +17,8 @@ import Footer from "./Footer";
 import ChooseTestament from "./Components/ChooseTestament/ChooseTestament";
 import Suggestion from "./Components/Main/Suggestion";
 import Suggest from"./Components/Main/Suggest";
+import SearchWord from"./Components/Main/SearchWord";
+
 
 const App = () => {
   return (
@@ -33,6 +35,8 @@ const App = () => {
             <Route path="myPage" element={<MyPage />}/>
             <Route path="chooseTestament" element={<ChooseTestament />} />
             <Route path="suggestion" element={<Suggestion />} />
+            <Route path="searchWord" element={<SearchWord />} />
+            
           </Route>
           <Route path="/suggest" element={<Suggest />} />
           <Route path="/login" element={<Login />} />

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import Modal from "react-modal";
 
 import './Bible.css'
 const Main5 = () => {
@@ -7,22 +8,15 @@ const Main5 = () => {
   const location = useLocation();
   const { list, chapter, verse } = location.state || {};
 
+  const [GraceIsOpen, setGraceIsOpen] = useState(false); // 모달 상태
+  const [inputValue, setInputValue] = useState('');
   const [maxChapter, setMaxChapter] = useState(); // maxChapter 초기값
   const [currentList, setCurrentList] = useState(list);
   const [currentChapter, setCurrentChapter] = useState(chapter); // 선택된 장 초기값
   const [currentVerse, setCurrentVerse] = useState(verse);
-  //const [contents, setContents] = useState([]);
-  const [getComment, setGetComment] = useState([]); //
   const [comment, setComment] = useState([]); // 댓글
   const [maxVerse, setMaxVerse] = useState();
   const [content, setContent] = useState("");
-  const jsonComment = {
-    user_id: sessionStorage.getItem("user_id"),
-    comment: comment,
-    list: currentList,
-    chapter: currentChapter,
-    verse: currentVerse
-  };
 
   const jsonList = {
     list: currentList
@@ -90,22 +84,6 @@ const Main5 = () => {
         setGetComment(data); // 댓글 목록을 상태에 업데이트
       })
       .catch(error => console.error("Error fetching comments:", error));*/}
-
-  const writeCommentButton = (e) => {
-
-    e.preventDefault();  // 기본 동작 방지
-
-    fetch('/api/writeComment', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-      },
-      body: JSON.stringify(jsonComment)
-    })
-
-      .then(setComment(""));
-    window.location.reload();
-  };
 
   const prevVerse = () => {
     let updatedVerse = currentVerse;
@@ -222,6 +200,42 @@ const Main5 = () => {
     }
   }
 
+  // 모달 닫기
+  const closeModal = () => {
+    setInputValue('');
+    setGraceIsOpen(false);
+  };
+
+  // 모달 열기
+  const openGrace = () => {
+    setGraceIsOpen(true);
+  };
+
+  const jsonComment = {
+    user_id: sessionStorage.getItem("user_id"),
+    comment: inputValue,
+    list: currentList,
+    chapter: currentChapter,
+    verse: currentVerse
+  };
+  
+  const writeComment = () => {
+    fetch('/api/writeComment', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      body: JSON.stringify(jsonComment)
+    })
+      window.alert("은혜 나눔에 감사합니다.");
+      setInputValue('');
+      setGraceIsOpen(false);
+  };
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
   return (
     <div>
       <div>
@@ -235,12 +249,25 @@ const Main5 = () => {
           <h1><br /><br /><button onClick={prevVerse} >이전 절</button> <button onClick={nextVerse}>다음 절</button></h1>
         </div>
 
-        <button onClick={writeCommentButton}>은혜 나누기</button>
+        <button onClick={() => { openGrace() }}>은혜 나누기</button>
         <br /><br />
-      
-        <ul className="exam">
 
-        </ul>
+        <Modal isOpen={GraceIsOpen} onRequestClose={closeModal}>
+          <button onClick={closeModal}>닫기</button>
+          <div>
+            {currentList} {currentChapter}장 {currentVerse}절
+            <br />
+            {content}
+          </div>
+          <div>
+            <input
+              type="text"
+              value={inputValue} // input의 value는 상태값으로 설정
+              onChange={handleInputChange} // input 값이 변경되면 상태 업데이트
+            />
+            <button onClick={writeComment}>댓글 작성</button>
+          </div>
+        </Modal>
       </div>
     </div>
   );
