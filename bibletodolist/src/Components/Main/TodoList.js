@@ -193,7 +193,7 @@ const TodoList = () => {
                 <div className="toDoChildFrame">
                     <p>성경 읽기 목표</p>
                     <ul>
-                        {todos.filter(todo => todo.status === 'wait', todo => todo.user_id === sessionStorage.getItem("user_id")).map((todo, index) => (
+                        {todos.filter(todo => todo.status === 'wait' && todo.user_id === sessionStorage.getItem("user_id")).map((todo, index) => (
                             <button onClick={() => openModal2(todo.id)}><li key={index}>{todo.title}</li></button>
                         ))}
                     </ul>
@@ -201,7 +201,7 @@ const TodoList = () => {
                 <div className="toDoChildFrame">
                     <p>진행중</p>
                     <ul>
-                        {todos.filter(todo => todo.status === 'doing', todo => todo.user_id === sessionStorage.getItem("user_id")).map((todo, index) => (
+                        {todos.filter(todo => todo.status === 'doing' && todo.user_id === sessionStorage.getItem("user_id")).map((todo, index) => (
                             <button onClick={() => openModal2(todo.id)}><li key={index}>{todo.title}</li></button>
                         ))}
                     </ul>
@@ -209,7 +209,7 @@ const TodoList = () => {
                 <div className="toDoChildFrame">
                     <p>완료</p>
                     <ul>
-                        {todos.filter(todo => todo.status === 'done', todo => todo.user_id === sessionStorage.getItem("user_id")).map((todo, index) => (
+                        {todos.filter(todo => todo.status === 'done' && todo.user_id === sessionStorage.getItem("user_id")).map((todo, index) => (
                             <button onClick={() => openModal2(todo.id)}><li key={index}>{todo.title}</li></button>
                         ))}
                     </ul>
