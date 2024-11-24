@@ -18,6 +18,7 @@ import ChooseTestament from "./Components/ChooseTestament/ChooseTestament";
 import Suggestion from "./Components/Main/Suggestion";
 import Suggest from"./Components/Main/Suggest";
 import SearchWord from"./Components/Main/SearchWord";
+import ContinueReading from "./Components/Main/ContinueReading";
 
 
 const App = () => {
@@ -36,7 +37,7 @@ const App = () => {
             <Route path="chooseTestament" element={<ChooseTestament />} />
             <Route path="suggestion" element={<Suggestion />} />
             <Route path="searchWord" element={<SearchWord />} />
-            
+            <Route path="continueReading" element={<ContinueReading />} />
           </Route>
           <Route path="/suggest" element={<Suggest />} />
           <Route path="/login" element={<Login />} />

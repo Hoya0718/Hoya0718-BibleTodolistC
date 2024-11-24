@@ -32,7 +32,7 @@ const Footer = () => {
                     </Link>
                 </div>
                 <div className="footer">
-                    <Link className="footerLink" to="/basic/main3">
+                    <Link className="footerLink" to="/basic/continueReading">
                         <div>
                             <img className="footerImg" src={bible} />
                         </div>
