@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
 import home from './img/home.png'
@@ -8,15 +8,6 @@ import community from './img/community.png'
 import my from './img/my.png'
 
 const Footer = () => {
-
-    const navigate = useNavigate();
-
-    const handleLogout = () => {
-        sessionStorage.removeItem('user_id');
-        sessionStorage.removeItem('user_role');
-
-        navigate('/');
-    }
     return (
         <>
             {/*<button onClick={handleLogout}>로그아웃</button>*/}

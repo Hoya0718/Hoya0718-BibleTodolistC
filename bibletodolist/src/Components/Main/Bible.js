@@ -20,6 +20,8 @@ const Main5 = () => {
   const [likecount, setLikeCount] = useState();
   const [refresh, setRefresh] = useState(false);  // 상태를 추가하여 좋아요 클릭 시 리렌더링 유도
 
+  const user_id = sessionStorage.getItem("user_id");
+
   const jsonList = {
     list: currentList
   };
@@ -27,8 +29,10 @@ const Main5 = () => {
   const jsonData = {
     list: currentList,
     chapter: currentChapter,
-    verse: currentVerse
+    verse: currentVerse,
+    user_id: user_id
   };
+
 
   const [checkedItems, setCheckedItems] = useState({}); // 각 항목의 체크 상태를 관리
   const handleCheckboxChange = (index) => {
@@ -67,18 +71,22 @@ const Main5 = () => {
         setContent(data.content); // 성경 내용 설정 
       })
       .catch(error => console.error("Error fetching content:", error));
+
+    // 성경 봤는지 안 봤는지
+    fetch('/api/checkVerse', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      body: JSON.stringify(jsonCheckVerse)
+    })
+      .then(data => {
+        console.log("체크 한 성경 구절 " + data);
+      })
+
   }, [currentVerse, refresh]);  // currentVerse가 변경될 때마다 호출됩니다.
-  // 성경 봤는지 안 봤는지
-  // fetch('/api/checkVerse', {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json; charset=utf-8",
-  //   },
-  //   body: JSON.stringify(jsonCheckVerse)
-  // })
-  //   .then(data => {
-  //     console.log("체크 한 성경 구절 " + data);
-  //   })
+
+
 
   // 댓글 목록을 가져오는 API 호출
 
@@ -222,7 +230,7 @@ const Main5 = () => {
     chapter: currentChapter,
     verse: currentVerse
   };
-  
+
   const writeComment = () => {
     fetch('/api/writeComment', {
       method: "POST",
@@ -231,9 +239,9 @@ const Main5 = () => {
       },
       body: JSON.stringify(jsonComment)
     })
-      window.alert("은혜 나눔에 감사합니다.");
-      setInputValue('');
-      setGraceIsOpen(false);
+    window.alert("은혜 나눔에 감사합니다.");
+    setInputValue('');
+    setGraceIsOpen(false);
   };
 
   const handleInputChange = (e) => {
@@ -243,22 +251,22 @@ const Main5 = () => {
   const likeBible = (bible_id) => {
 
     let user_id = sessionStorage.getItem("user_id");
-    console.log(bible_id +" "+user_id)
+    console.log(bible_id + " " + user_id)
 
     fetch('/api/likeBible', {
-      method : "POST",
-      headers : {
+      method: "POST",
+      headers: {
         "Content-Type": "application/json; charset=utf-8"
       },
-      body : JSON.stringify({
-        bible_id : bible_id,
-        user_id : user_id
-      }) 
+      body: JSON.stringify({
+        bible_id: bible_id,
+        user_id: user_id
+      })
     })
-    .then(() => {
-      console.log("재실행");
-      setRefresh(prev => !prev);  // 상태를 토글하여 useEffect가 다시 실행되게 만듬}
-    });
+      .then(() => {
+        console.log("재실행");
+        setRefresh(prev => !prev);  // 상태를 토글하여 useEffect가 다시 실행되게 만듬}
+      });
   }
   return (
     <div>
