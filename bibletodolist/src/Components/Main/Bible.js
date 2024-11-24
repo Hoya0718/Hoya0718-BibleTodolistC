@@ -14,9 +14,11 @@ const Main5 = () => {
   const [currentList, setCurrentList] = useState(list);
   const [currentChapter, setCurrentChapter] = useState(chapter); // 선택된 장 초기값
   const [currentVerse, setCurrentVerse] = useState(verse);
-  const [comment, setComment] = useState([]); // 댓글
+  const [bibleId, setBibleId] = useState();
   const [maxVerse, setMaxVerse] = useState();
   const [content, setContent] = useState("");
+  const [likecount, setLikeCount] = useState();
+  const [refresh, setRefresh] = useState(false);  // 상태를 추가하여 좋아요 클릭 시 리렌더링 유도
 
   const jsonList = {
     list: currentList
@@ -57,13 +59,15 @@ const Main5 = () => {
       .then(response => response.json())
       .then(data => {
         console.log(data);
+        setLikeCount(data.like_count)
+        setBibleId(data.bible_id);
         setMaxVerse(data.maxVerse);
         setMaxChapter(data.maxChapter); // 최대 장 설정
         setCurrentVerse(data.verse); // 기본값 제공
         setContent(data.content); // 성경 내용 설정 
       })
       .catch(error => console.error("Error fetching content:", error));
-  }, [currentVerse]);  // currentVerse가 변경될 때마다 호출됩니다.
+  }, [currentVerse, refresh]);  // currentVerse가 변경될 때마다 호출됩니다.
   // 성경 봤는지 안 봤는지
   // fetch('/api/checkVerse', {
   //   method: "POST",
@@ -236,6 +240,26 @@ const Main5 = () => {
     setInputValue(e.target.value);
   };
 
+  const likeBible = (bible_id) => {
+
+    let user_id = sessionStorage.getItem("user_id");
+    console.log(bible_id +" "+user_id)
+
+    fetch('/api/likeBible', {
+      method : "POST",
+      headers : {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      body : JSON.stringify({
+        bible_id : bible_id,
+        user_id : user_id
+      }) 
+    })
+    .then(() => {
+      console.log("재실행");
+      setRefresh(prev => !prev);  // 상태를 토글하여 useEffect가 다시 실행되게 만듬}
+    });
+  }
   return (
     <div>
       <div>
@@ -246,6 +270,7 @@ const Main5 = () => {
         <br />
         <div>{content}</div>
         <div>
+          <div>[{likecount}]<button onClick={() => likeBible(bibleId)}>좋아요</button></div>
           <h1><br /><br /><button onClick={prevVerse} >이전 절</button> <button onClick={nextVerse}>다음 절</button></h1>
         </div>
 
