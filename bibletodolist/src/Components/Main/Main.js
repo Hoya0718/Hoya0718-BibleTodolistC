@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import alarm from '../../img/alarm.png'
-import biblebook from '../../img/biblebook.png'
-import bookmark from '../../img/bookmark.png'
-import glasses from '../../img/glasses.png'
+import alarm from '../../img/alarm.png';
+import biblebook from '../../img/biblebook.png';
+import bookmark from '../../img/bookmark.png';
+import glasses from '../../img/glasses.png';
+import ProgressBar from './ProgressBar';
 
-import './Main.css'
+import './Main.css';
 
 const Main = () => {
-
     const userId = sessionStorage.getItem('user_id');
     const userRole = sessionStorage.getItem('user_role');
     const [bible, setBible] = useState({});
+    const [totalReading, setTotalReading] = useState("");
+    const [totalProgress, setTotalProgress] = useState({});
 
+    // 오늘의 성경 데이터를 가져오는 useEffect
     useEffect(() => {
         fetch("/api/todayBible")
             .then(res => res.json())
@@ -22,7 +25,50 @@ const Main = () => {
                 setBible(data);
             })
             .catch(error => console.error('Error fetching Bible data:', error));
-    }, []);  // empty dependency array ensures this runs only once when the component mounts
+    }, []); // 빈 배열을 넣어서 컴포넌트가 마운트될 때 한 번만 호출
+
+    // 전체 진행률 데이터를 가져오는 useEffect
+    useEffect(() => {
+        if (userId) { // userId가 존재하는 경우에만 호출
+            fetch("/api/totalReading", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                },
+                body: JSON.stringify({ user_id: userId })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    setTotalReading(data);
+                })
+                .catch(error => console.error('Error fetching total reading data:', error));
+        }
+    }, []);
+
+    // 진행률 데이터 가져오는 useEffect
+    useEffect(() => {
+        if (userId) { // userId가 존재하는 경우에만 호출
+            fetch("/api/totalProgress", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                },
+                body: JSON.stringify({ user_id: userId })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    setTotalProgress(data); // 전체 진행률 상태 업데이트
+                })
+                .catch(error => console.error('Error fetching total progress data:', error));
+        }
+    }, [userId]);
+
+    // '0.33'과 같은 문자열을 숫자로 변환하고 소수점 2자리로 포맷
+    const formattedProgress = totalProgress.progress_bar 
+      ? parseFloat(totalProgress.progress_bar).toFixed(2)
+      : "0.00";
 
     return (
         <div className="fullFrame">
@@ -114,8 +160,10 @@ const Main = () => {
                         </div>
                     </Link>
                 </div>
-
-                <div>성경 진행률</div>
+                <div>전체 진행률</div>
+                <div>{formattedProgress}%</div>
+                <ProgressBar progress={formattedProgress} />
+                <div>({totalReading.count} / 31089)</div>
             </div>
         </div>
     );

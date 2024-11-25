@@ -1,0 +1,26 @@
+/* 프로그레스 바 컨테이너 */
+.progress-bar-container {
+    width: 100%;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    height: 30px;
+    overflow: hidden;
+  }
+  
+  /* 프로그레스 바 */
+  .progress-bar {
+    height: 100%;
+    background-color: #4caf50; /* 바의 색상 */
+    text-align: center;
+    color: white;
+    line-height: 30px; /* 텍스트 수평 중앙 배치 */
+    font-weight: bold;
+    border-radius: 10px 0 0 10px;
+    transition: width 0.3s ease;
+  }
+  
+  /* 텍스트 스타일 */
+  .progress-text {
+    font-size: 14px;
+  }
+  
