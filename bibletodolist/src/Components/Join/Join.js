@@ -66,7 +66,7 @@ const Join = () => {
                 <hr />
 
                 <input
-                    type="text"
+                    type="password"
                     id=""
                     name="pw"
                     value={joinInfo.pw}
