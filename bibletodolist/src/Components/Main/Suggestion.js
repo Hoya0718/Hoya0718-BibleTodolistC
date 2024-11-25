@@ -72,6 +72,7 @@ const Suggestion = () => {
                         <div>순서 : {exam.id}</div>
                         <div>작성자 : {exam.user_id}</div> {/* exam 객체에 user_id가 있어야 합니다 */}
                         <div>제목 : {exam.title}</div>
+                        <div>내용 : {exam.suggest}</div>
                         <div>작성일: {formatDate(exam.feedback_date)}</div>
                     </li>
                 ))}

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
 const Suggest = () => {
+    const userId = sessionStorage.getItem("user_id")
     // 하나의 상태 객체로 title과 suggest 관리
-    const [feedback, setFeedback] = useState({ title: '', suggest: '' });
+    const [feedback, setFeedback] = useState({ title: '', suggest: '', user_id: userId });
 
     // 제목 입력 변경 시 상태 업데이트
     const handleTitleChange = (e) => {
