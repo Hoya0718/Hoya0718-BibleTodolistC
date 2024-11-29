@@ -5,19 +5,11 @@ import './Hello.css'
 
 
 const Hello = () => {
-    const [message, setMessage] = useState("");
-    
-    useEffect(() => {
-        fetch("/api/exam")
-            .then((res) => {return res.json();})
-            .then((data) => {setMessage(data.message);
-            });
-    }, []);
 
     return (
         <div>
             <div className="container">
-                <div> <span id="title">Bible diary - {message}</span></div>
+                <div> <span id="title">Bible diary</span></div>
                 <Link to="/home" className="open-btn">open</Link>
     
                 <div className="bottom-buttons">

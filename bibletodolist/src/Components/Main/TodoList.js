@@ -251,6 +251,7 @@ const TodoList = () => {
                             <div className="buttonsContainer">
                                 <button onClick={() => { setSelectedRange([]); setNum1(null); setNum2(null); setClickCount(0) }} className="resetButton">초기화</button>
                                 <button onClick={save} className="applyButton">추가하기</button>
+                                선택한 성경 목차: {list}
                                 <div className="numberButtons">
                                     {/* 첫 번째 버튼 */}
                                     <button className="numberButton">{num1}</button><span className="numberSpan">장에서</span>
