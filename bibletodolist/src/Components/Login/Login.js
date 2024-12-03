@@ -9,8 +9,7 @@ const Login = () => {
     });
 
     const navigate = useNavigate();  // useNavigate 훅을 사용하여 navigate 함수 가져오기
-    const location = useLocation();
-
+    const location = useLocation();  // 현재 위치 정보를 가져옴
 
     // 입력값이 변경될 때마다 상태를 업데이트하는 함수
     const handleChange = (e) => {
@@ -53,78 +52,66 @@ const Login = () => {
             });
     };
 
+    // OAuth2 로그인 처리
     const OAuth2Login = (provider) => {
         window.location.href = `http://localhost:8090/oauth2/authorization/${provider}`;
+        console.log("로그입니다."+provider);
+    };
 
-        // 리다이렉트 후 콜백에서 처리
-        fetch(`/api/oauth2/callback?code=${code}`, {
-            method: "GET"
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.user_id) {
-                    sessionStorage.setItem("user_id", data.user_id);
-                    navigate("/basic");
-                }
-            });
-    }
-}
+    return (
+        <div>
+            <div className="container">
+                <Link to="/">
+                    <div className="back-arrow">←</div>
+                </Link>
+                <h1>로그인</h1>
 
+                <form onSubmit={handleSubmit} method="POST">
+                    <label htmlFor="id">아이디</label>
+                    <input
+                        type="text"
+                        id="id"
+                        placeholder="아이디를 입력해주세요."
+                        name="user_id"
+                        value={loginInfo.user_id}
+                        onChange={handleChange}  // 입력값이 변경될 때마다 handleChange 호출
+                    />
 
-return (
-    <div>
-        <div className="container">
-            <Link to="/">
-                <div className="back-arrow">←</div>
-            </Link>
-            <h1>로그인</h1>
+                    <label htmlFor="password">비밀번호</label>
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="비밀번호를 입력해주세요."
+                        name="user_pw"
+                        value={loginInfo.user_pw}
+                        onChange={handleChange}  // 입력값이 변경될 때마다 handleChange 호출
+                    />
+                    <button type="submit" className="login-btn">로그인</button>
+                </form>
 
-            <form onSubmit={handleSubmit} method="POST">
-                <label htmlFor="id">아이디</label>
-                <input
-                    type="text"
-                    id="id"
-                    placeholder="아이디를 입력해주세요."
-                    name="user_id"
-                    value={loginInfo.user_id}
-                    onChange={handleChange}  // 입력값이 변경될 때마다 handleChange 호출
-                />
+                <div className="link-group">
+                    <a href="#">아이디 찾기</a>
+                    <span>|</span>
+                    <a href="#">비밀번호 찾기</a>
+                    <span>|</span>
+                    <a href="#">회원가입</a>
+                </div>
 
-                <label htmlFor="password">비밀번호</label>
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="비밀번호를 입력해주세요."
-                    name="user_pw"
-                    value={loginInfo.user_pw}
-                    onChange={handleChange}  // 입력값이 변경될 때마다 handleChange 호출
-                />
-                <button type="submit" className="login-btn">로그인</button>
-            </form>
+                <div className="separator">간편 로그인</div>
 
-            <div className="link-group">
-                <a href="#">아이디 찾기</a>
-                <span>|</span>
-                <a href="#">비밀번호 찾기</a>
-                <span>|</span>
-                <a href="#">회원가입</a>
+                <button className="social-login-btn kakao" onClick={() => OAuth2Login("kakao")}>
+                    <img src="/img/카카오.png" alt="카카오 로그인" />카카오로 로그인
+                </button>
+                <button className="social-login-btn naver" onClick={() => OAuth2Login("naver")}>
+                    <img src="/img/naver.png" alt="네이버 로그인" />네이버로 로그인
+                </button>
+                <button className="social-login-btn google" onClick={() => OAuth2Login("google")}>
+                    <img src="/img/google.png" alt="구글 로그인" /><p>구글로 로그인</p>
+                </button>
+
             </div>
-
-            <div className="separator">간편 로그인</div>
-
-            <button className="social-login-btn kakao" onClick={() => OAuth2Login("kakao")}>
-                <img src="/img/카카오.png" alt="카카오 로그인" />카카오로 로그인
-            </button>
-            <button className="social-login-btn naver" onClick={() => OAuth2Login("naver")}>
-                <img src="/img/naver.png" alt="네이버 로그인" />네이버로 로그인
-            </button>
-            <button className="social-login-btn google" onClick={() => OAuth2Login("google")}>
-                <img src="/img/google.png" alt="구글 로그인" /><p>구글로 로그인</p>
-            </button>
-
         </div>
-    </div>
-);
+    );
 };
 
 export default Login;
