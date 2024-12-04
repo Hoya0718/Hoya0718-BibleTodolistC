@@ -15,7 +15,7 @@ const Main = () => {
     const [bible, setBible] = useState({});
     const [totalReading, setTotalReading] = useState("");
     const [totalProgress, setTotalProgress] = useState({});
-
+    
     // 오늘의 성경 데이터를 가져오는 useEffect
     useEffect(() => {
         fetch("/api/todayBible")

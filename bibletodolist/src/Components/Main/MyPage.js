@@ -24,6 +24,8 @@ const MyPage = () => {
     const handleLogout = () => {
         sessionStorage.removeItem('user_id');
         sessionStorage.removeItem('user_role');
+        sessionStorage.removeItem('user_name');
+        sessionStorage.removeItem('user_picture');
 
         navigate('/');
     }
