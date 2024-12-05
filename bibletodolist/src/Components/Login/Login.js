@@ -12,7 +12,7 @@ const Login = () => {
     const [isLoading, setIsLoading] = useState(false);  // 로딩 상태
     const navigate = useNavigate();
 
-    // OAuth2 로그인 처리
+    // OAuth2 로그인 처리 서버에서 처리 후 반납
     const OAuth2Login = (provider) => {
         window.location.href = `http://localhost:8090/oauth2/authorization/${provider}`;
     }
