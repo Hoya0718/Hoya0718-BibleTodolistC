@@ -19,6 +19,7 @@ import Suggestion from "./Components/Main/Suggestion";
 import Suggest from"./Components/Main/Suggest";
 import SearchWord from"./Components/Main/SearchWord";
 import ContinueReading from "./Components/Main/ContinueReading";
+import OAuth2Callback from "./Components/Login/OAuth2Callback";
 
 
 const App = () => {
@@ -39,6 +40,7 @@ const App = () => {
             <Route path="searchWord" element={<SearchWord />} />
             <Route path="continueReading" element={<ContinueReading />} />
           </Route>
+          <Route path="/oauth2Callback" element={<OAuth2Callback />} />
           <Route path="/suggest" element={<Suggest />} />
           <Route path="/login" element={<Login />} />
           <Route path="/join" element={<Join />} />
