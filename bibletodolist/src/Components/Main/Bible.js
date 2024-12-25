@@ -49,42 +49,52 @@ const Main5 = () => {
     verse: currentVerse
   };
 
-
   useEffect(() => {
+    // API 요청을 위한 공통 설정
+    const fetchConfig = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+        }
+    };
 
-    //선택한 성경 구절을 가져온다.
-    fetch('/api/getSelectedContent', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-      },
-      body: JSON.stringify(jsonData)
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        setLikeCount(data.like_count)
-        setBibleId(data.bible_id);
-        setMaxVerse(data.maxVerse);
-        setMaxChapter(data.maxChapter); // 최대 장 설정
-        setCurrentVerse(data.verse); // 기본값 제공
-        setContent(data.content); // 성경 내용 설정 
-      })
-      .catch(error => console.error("Error fetching content:", error));
+    const fetchData = async () => {
+        try {
+            // 병렬로 두 요청을 동시에 실행
+            const [contentResponse, _] = await Promise.all([
+                fetch('/api/getSelectedContent', {
+                    ...fetchConfig,
+                    body: JSON.stringify(jsonData)
+                }),
+                fetch('/api/checkVerse', {
+                    ...fetchConfig,
+                    body: JSON.stringify(jsonCheckVerse)
+                })
+            ]);
 
-    // 성경 봤는지 안 봤는지
-    fetch('/api/checkVerse', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-      },
-      body: JSON.stringify(jsonCheckVerse)
-    })
-      .then(data => {
-        console.log("체크 한 성경 구절 " + data);
-      })
+            // 성경 내용 데이터 처리
+            const { 
+                like_count,
+                bible_id,
+                maxVerse,
+                maxChapter,
+                content 
+            } = await contentResponse.json();
 
-  }, [currentVerse, refresh]);  // currentVerse가 변경될 때마다 호출됩니다.
+            // 상태 일괄 업데이트
+            setLikeCount(like_count);
+            setBibleId(bible_id);
+            setMaxVerse(maxVerse);
+            setMaxChapter(maxChapter);
+            setContent(content);
+
+        } catch (error) {
+            console.error("데이터 가져오기 실패:", error);
+        }
+    };
+
+    fetchData();
+}, [currentVerse, refresh, jsonData, jsonCheckVerse]);
 
 
 

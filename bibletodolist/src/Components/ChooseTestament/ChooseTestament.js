@@ -12,8 +12,8 @@ const ChooseTestament = () => {
 
   // 마지막으로 선택된 목차, 장, 절을 가져와 해당되는 구문 출력하기 위해 사용
   const [lastList, setLastList] = useState("");
-  const [lastChapter, setLastChapters] = useState("");
-
+  const [lastChapter, setLastChapter] = useState("");
+ 
   // state 값이 없을 경우 기본값 설정
   const getProp = location.state?.prop || "기본값";
 
@@ -59,7 +59,7 @@ const ChooseTestament = () => {
       chapter: e.target.textContent,
       list: lastList
     }
-    setLastChapters(e.target.textContent);
+    setLastChapter(e.target.textContent);
     fetch('/api/getVerse', {
       method: "POST",
       headers: {
@@ -75,11 +75,9 @@ const ChooseTestament = () => {
   };
 
   //선택한 절(ex. 창세기 1장 1절)의 내용을 호출해 main5컴포넌트에게 전송 및 이동
-  const getContent = (e) => {
-    console.log(lastList);
-    console.log(lastChapter);
-    console.log(e.target.textContent);
-    navigate('/basic/bible', { state: { list: lastList, chapter: lastChapter, verse: e.target.textContent.trim() } });
+  const getContent = (verse) => {
+    console.log('verse:', verse);
+    navigate('/basic/bible', { state: { list: lastList, chapter: lastChapter, verse: verse} });
   }
 
 
@@ -104,7 +102,7 @@ const ChooseTestament = () => {
         <div>
           <ul>
             {verses.map((verse, index) => (
-              <li key={index}><button onClick={getContent}>{verse}</button></li> //절 선택
+              <li key={index}><button onClick={() => getContent(verse)}>{verse}</button></li> //절 선택
             ))}
           </ul>
         </div>
