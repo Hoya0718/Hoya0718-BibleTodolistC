@@ -90,10 +90,10 @@ return (
                 <img src="/img/카카오.png" alt="카카오 로그인" />카카오로 로그인
             </button> */}
             <button className="social-login-btn naver" onClick={() => OAuth2Login("naver")}>
-                <img src="/img/naver.png" alt="네이버 로그인" />네이버로 로그인
+                <p>네이버로 로그인</p>
             </button>
             <button className="social-login-btn google" onClick={() => OAuth2Login("google")}>
-                <img src="/img/google.png" alt="구글 로그인" /><p>구글로 로그인</p>
+                <p>구글로 로그인</p>
             </button>
         </div>
     </div>
