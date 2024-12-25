@@ -14,7 +14,7 @@ const Login = () => {
 
     // OAuth2 로그인 처리 서버에서 처리 후 반납
     const OAuth2Login = (provider) => {
-        window.location.href = `http://localhost:8090/oauth2/authorization/${provider}`;
+        window.location.href = `http://btl.nayo.kr/oauth2/authorization/${provider}`;
     }
 
 const handleChange = (e) => {
