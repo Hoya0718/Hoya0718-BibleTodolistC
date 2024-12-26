@@ -113,7 +113,7 @@ const Main5 = () => {
     let updatedList = currentList;
     if (1 < currentVerse) {
       console.log("절 다운그레이드")
-      updatedVerse = currentVerse - 1;
+      updatedVerse = parseInt(currentVerse) - 1;
       setCurrentVerse(updatedVerse);
     }
     else {
@@ -122,7 +122,7 @@ const Main5 = () => {
       }
       //현재 장이 1장보다 크면 현재 장 -1 빼기
       else if (1 < currentChapter) {
-        updatedChapter = currentChapter - 1;
+        updatedChapter = parseInt(currentChapter) - 1;
 
         fetch('/api/getMaxVerse', {
           method: "POST",
@@ -188,7 +188,7 @@ const Main5 = () => {
     // 현재 절이 마지막 절이 아닐 경우
     if (currentVerse < maxVerse) {
       console.log("절 업그레이드")
-      updatedVerse = currentVerse + 1;
+      updatedVerse = parseInt(currentVerse) + 1;
       setCurrentVerse(updatedVerse);
     }
     else {
