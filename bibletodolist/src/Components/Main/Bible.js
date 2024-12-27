@@ -282,8 +282,8 @@ const Main5 = () => {
     <div>
       <div>
         <div>
-          {currentList} : {currentChapter}<br />
-          ({currentVerse}: {maxVerse}) <br />
+          {currentList}<br />
+          ({currentChapter}장 {currentVerse}절) <br />
         </div>
         <br />
         <div>{content}</div>
