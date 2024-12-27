@@ -41,6 +41,7 @@ const App = () => {
             <Route path="searchWord" element={<SearchWord />} />
             <Route path="continueReading" element={<ContinueReading />} />
           </Route>
+          <Route path="/error" element={<Error />} />
           <Route path="*" element={<Error />} />
           <Route path="/oauth2Callback" element={<OAuth2Callback />} />
           <Route path="/suggest" element={<Suggest />} />
