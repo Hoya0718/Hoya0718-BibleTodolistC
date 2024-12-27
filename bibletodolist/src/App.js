@@ -13,6 +13,7 @@ import TodoList from "./Components/Main/TodoList"
 import Bible from "./Components/Main/Bible"
 import MyPage from "./Components/Main/MyPage"
 
+import Error from "./Components/Main/Error"
 import Footer from "./Footer";
 import ChooseTestament from "./Components/ChooseTestament/ChooseTestament";
 import Suggestion from "./Components/Main/Suggestion";
@@ -40,6 +41,7 @@ const App = () => {
             <Route path="searchWord" element={<SearchWord />} />
             <Route path="continueReading" element={<ContinueReading />} />
           </Route>
+          <Route path="*" element={<Error />} />
           <Route path="/oauth2Callback" element={<OAuth2Callback />} />
           <Route path="/suggest" element={<Suggest />} />
           <Route path="/login" element={<Login />} />

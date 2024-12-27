@@ -6,6 +6,12 @@ import './Hello.css'
 
 const Hello = () => {
 
+    useEffect(() => {
+
+        sessionStorage.removeItem('user_id');
+        sessionStorage.removeItem('user_role');
+    }, []); 
+    
     return (
         <div>
             <div className="container">
