@@ -1,17 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 const SearchWord = () => {
     const [word, setWord] = useState('');
+    const [searchedWord, setSearchedWord] = useState(''); // 검색된 단어를 저장하는 상태 추가
     const [getlists, setGetList] = useState([]);
 
     const handleChange = (e) => {
         setWord(e.target.value);
-    }
+    };
 
     const search = () => {
+        setSearchedWord(word); // 검색 시 검색어 저장
         fetch('/api/SearchWord', {
             method: "POST",
-            headers: {  // header -> headers로 수정
+            headers: {
                 "Content-Type": "application/json; charset=utf-8"
             },
             body: JSON.stringify({ "content": word })
@@ -25,8 +27,24 @@ const SearchWord = () => {
             .catch(error => {
                 console.error("에러 발생:", error);
             });
-    }
+    };
 
+    // 검색어를 하이라이트하는 함수
+    const highlightText = (text, searchWord) => {
+        if (!searchWord || !text) return text;
+        
+        try {
+            const regex = new RegExp(`(${searchWord})`, 'gi');
+            const parts = text.split(regex);
+            return parts.map((part, index) => 
+                part.toLowerCase() === searchWord.toLowerCase() ? 
+                    <span key={index} style={{backgroundColor: '#90CDF4'}}>{part}</span> : part
+            );
+        } catch (error) {
+            return text;
+        }
+    };
+    
     return (
         <>
             <div>
@@ -44,16 +62,17 @@ const SearchWord = () => {
             </div>
             <br/>
             <ul>
-
                 {getlists && getlists.map((list, index) => (
-                    <li key={index}>
-                        {/* Map 객체의 각 필드를 표시 */}
-                        {list.list} {list.chapter}장 {list.verse}절: {list.content}
+                    <li key={index}> 
+                        {list.list} {list.chapter}장 {list.verse}절: {' '}
+                        {highlightText(list.content, searchedWord)} {/* searchedWord 사용 */}
+                        <br/>
+                        <br/>
                     </li>
                 ))}
             </ul>
         </>
-    )
-}
+    );
+};
 
 export default SearchWord;
