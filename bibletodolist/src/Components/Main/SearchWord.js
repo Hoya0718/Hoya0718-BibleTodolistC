@@ -30,6 +30,10 @@ const SearchWord = () => {
     return (
         <>
             <div>
+                <h2>성경 내용을 검색하세요</h2>
+                <br/>
+            </div>
+            <div>
                 <input
                     type="text"
                     value={word}
@@ -38,7 +42,7 @@ const SearchWord = () => {
                 />
                 <button onClick={search}>검색</button>
             </div>
-            <div>성경</div>
+            <br/>
             <ul>
 
                 {getlists && getlists.map((list, index) => (
