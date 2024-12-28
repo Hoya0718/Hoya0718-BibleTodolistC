@@ -1,35 +1,115 @@
+/* 데스크톱 기본 스타일 (768px 이상) */
 .frame {
-    display: flex;
-    justify-content: space-between; /* 자식들이 균등하게 나누어지도록 설정 */
-  }
-  
-  .f_child {
-    flex: 1; /* 각 자식이 동일한 너비를 가질 수 있도록 */
-    padding: 10px;
-    border : 1px solid #ccc;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  height: calc(100vh - 60px);
+  padding: 20px;
+  gap: 20px;
+}
+
+.f_child {
+  flex: 1;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
 .f_ul {
-    display: flex;
-    flex-wrap: wrap; /* 항목들이 넘칠 경우 다음 줄로 자동으로 넘어가도록 설정 */
-    padding: 0;
-    margin: 0;
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  gap: 10px;
+}
+
 .f_li {
-    margin: 2px; /* 각 항목 간의 간격을 설정 */
-  }
-  
+  margin: 0;
+  width: calc(33.333% - 7px);
+}
+
 .f_button {
-    width: 70px; /* 버튼의 너비를 고정 */
-    height: 50px; /* 버튼의 높이를 고정 */
-    padding: 0; /* 내장 여백 제거 */
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    cursor: pointer;
-    text-align: center; /* 텍스트 중앙 정렬 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 50px;
+  border: 1px solid #e0e0e0;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.f_button:hover {
+  background-color: #f0f0f0;
+}
+
+/* 모바일 전용 스타일 (768px 미만) */
+@media screen and (max-width: 767px) {
+  .frame {
+    flex-direction: column;
+    height: 100%;
+    padding: 10px;
+    gap: 10px;
   }
-  
+
+  .f_child {
+    /* 고정 높이 지정 */
+    height: 200px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding: 10px;
+    flex: none;
+  }
+
+  .f_ul {
+    gap: 5px;
+  }
+
+  .f_li {
+    width: calc(50% - 3px); /* 2열 그리드 */
+  }
+
+  .f_button {
+    height: 40px;
+    font-size: 14px;
+    padding: 5px;
+  }
+
+  /* 스크롤바 스타일링 */
+  .f_child::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .f_child::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  .f_child::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 2px;
+  }
+}
+
+/* 작은 모바일 화면 (480px 미만) */
+@media screen and (max-width: 479px) {
+  .frame {
+    padding: 5px;
+  }
+
+  .f_child {
+    height: 180px;
+    margin-bottom: 5px;
+  }
+
+  .f_li {
+    width: calc(50% - 3px); /* 유지 */
+  }
+
+  .f_button {
+    height: 36px;
+    font-size: 13px;
+  }
+}
