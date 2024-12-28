@@ -85,24 +85,24 @@ const ChooseTestament = () => {
     <div>
       <h1>전달 받은 데이터: {getProp}</h1>
       <div className="frame">
-        <div>
-          <ul>
+        <div className="f_child">
+          <ul className="f_ul">
             {lists.map((list, index) => (
-              <li key={index}><button onClick={getChapter}>{list}</button></li> //목차 선택
+              <li className="f_li" key={index}><button className="f_button" onClick={getChapter}>{list}</button></li> //목차 선택
             ))}
           </ul>
         </div>
-        <div>
-          <ul>
+        <div className="f_child">
+          <ul className="f_ul">
             {chapters.map((chapter, index) => (
-              <li key={index}><button onClick={getVerse}>{chapter}</button></li> //장 선택
+              <li className="f_li" key={index}><button  className="f_button" onClick={getVerse}>{chapter}</button></li> //장 선택
             ))}
           </ul>
         </div>
-        <div>
-          <ul>
+        <div className="f_child">
+          <ul className="f_ul">
             {verses.map((verse, index) => (
-              <li key={index}><button onClick={() => getContent(verse)}>{verse}</button></li> //절 선택
+              <li className="f_li" key={index}><button  className="f_button" onClick={() => getContent(verse)}>{verse}</button></li> //절 선택
             ))}
           </ul>
         </div>
